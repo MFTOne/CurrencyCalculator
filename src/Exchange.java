@@ -30,11 +30,11 @@ public class Exchange {
     }
     public Exchange toDollar(){
         System.out.print("=");
-        return new Exchange(this.value / this.exchange_rate);
+        return new Exchange(this.value * this.exchange_rate);
     }
 
     public Exchange toRouble(){
         System.out.print("=");
-        return new Exchange(this.value * this.exchange_rate);
+        return new Exchange(this.value / this.exchange_rate);
     }
 }
