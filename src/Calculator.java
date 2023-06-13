@@ -10,10 +10,10 @@ public class Calculator {
             System.out.print(Exchange.conversion(expression));
             if(Exchange.conversion(expression)==values.rub){
                 Exchange currencyUSD = new Exchange(Double.parseDouble(expression.replaceAll("\\D","")));
-                System.out.print(currencyUSD.toRouble().get_value());
+               System.out.print(currencyUSD.toRouble().get_value());
             }
-            else {Exchange currencyRUB = new Exchange(Double.parseDouble(expression.replaceAll("\\D","")));
-                System.out.print(currencyRUB.toDollar().get_value());}
+           else {Exchange currencyRUB = new Exchange(Double.parseDouble(expression.replaceAll("\\D","")));
+               System.out.print(currencyRUB.toDollar().get_value());}
 
         }
     }
