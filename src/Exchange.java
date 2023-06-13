@@ -10,7 +10,7 @@ public class Exchange {
         FileInputStream path;
         Properties properties = new Properties();
         try{
-            path= new FileInputStream("C:\\Users\\akitaru\\IdeaProjects\\CurrencyCalculator\\src\\Configuration.properties\"");
+            path= new FileInputStream("C:\\Users\\akitaru\\IdeaProjects\\CurrencyCalculator\\src\\Configuration.properties");
             properties.load(path);
             exchange_rate=Double.parseDouble(properties.getProperty("db.exrate"));
         } catch (IOException e) {
