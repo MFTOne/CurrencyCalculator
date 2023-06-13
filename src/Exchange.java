@@ -22,15 +22,23 @@ public class Exchange {
         return value;
     }
     public static values conversion(String tmp) {
-        if (tmp.indexOf('$') != -1) return values.usd;
-        else return values.rub;
+        if (tmp.indexOf('$') != -1) return values.rub;
+        else if (tmp.indexOf('p')!=-1) return values.usd;
+        else return values.other;
+
     }
     public Exchange toDollar(){
-        return new Exchange(this.value/this.exchange_rate);
+        System.out.print("=");
+        return new Exchange(this.value / this.exchange_rate);
     }
 
     public Exchange toRouble(){
+        System.out.print("=");
         return new Exchange(this.value * this.exchange_rate);
     }
 
+    public Exchange catching(){
+        System.out.print(" ");
+        return new Exchange(this.value);
+    }
 }

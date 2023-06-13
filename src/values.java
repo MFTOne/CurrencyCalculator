@@ -1,3 +1,3 @@
 public enum values {
-    rub,usd;
+    rub,usd,other;
 }
