@@ -10,19 +10,11 @@ public class Calculator {
             System.out.print(Exchange.conversion(expression));
             if(Exchange.conversion(expression)==values.rub){
                 Exchange currencyUSD = new Exchange(Double.parseDouble(expression.replaceAll("[^\\d\\. ]","")));
-                double n=(currencyUSD.toRouble().get_value());
-                n=n*100;
-                int result = (int)Math.round(n);
-                float result1 = (float) result / 100;
-                System.out.print(result1);
+                System.out.print(Functions.func1(currencyUSD.toRouble().get_value()));
             }
             else if (Exchange.conversion(expression)==values.usd) {
                 Exchange currencyRUB = new Exchange(Double.parseDouble(expression.replaceAll("[^\\d\\. ]","")));
-                double n=(currencyRUB.toDollar().get_value());
-                n=n*100;
-                int result = (int)Math.round(n);
-                float result1 = (float) result / 100;
-                System.out.print(result1);
+                System.out.print(Functions.func1(currencyRUB.toDollar().get_value()));
             }
             else System.out.print(" currency is not supported.");
         }
