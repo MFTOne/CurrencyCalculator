@@ -8,12 +8,13 @@ public class Calculator {
             String expression = scanner.nextLine();
             if(expression.equals("end")) break;
             System.out.print(Exchange.conversion(expression));
+
             if(Exchange.conversion(expression)==values.rub){
-                Exchange currencyUSD = new Exchange(Double.parseDouble(expression.replaceAll("\\D","")));
+                Exchange currencyUSD = new Exchange(Double.parseDouble(expression.replaceAll("[^\\d\\. ]","")));
                System.out.print(currencyUSD.toRouble().get_value());}
 
            else if (Exchange.conversion(expression)==values.usd) {
-               Exchange currencyRUB = new Exchange(Double.parseDouble(expression.replaceAll("\\D","")));
+               Exchange currencyRUB = new Exchange(Double.parseDouble(expression.replaceAll("[^\\d\\. ]","")));
                System.out.print(currencyRUB.toDollar().get_value());
            }
            else System.out.print(" currency is not supported.");
