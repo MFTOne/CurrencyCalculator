@@ -37,8 +37,4 @@ public class Exchange {
         return new Exchange(this.value * this.exchange_rate);
     }
 
-    public Exchange catching(){
-        System.out.print(" ");
-        return new Exchange(this.value);
-    }
 }
