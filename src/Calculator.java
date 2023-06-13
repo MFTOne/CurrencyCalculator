@@ -14,7 +14,6 @@ public class Calculator {
             }
            else {Exchange currencyRUB = new Exchange(Double.parseDouble(expression.replaceAll("\\D","")));
                System.out.print(currencyRUB.toDollar().get_value());}
-
         }
     }
 }
