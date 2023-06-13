@@ -22,7 +22,7 @@ public class Calculator {
                 n=n*100;
                 int result = (int)Math.round(n);
                 float result1 = (float) result / 100;
-               System.out.print(result1);
+                System.out.print(result1);
             }
             else System.out.print(" currency is not supported.");
         }
