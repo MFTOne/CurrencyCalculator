@@ -1,7 +1,7 @@
 import java.util.Scanner;
 public class Calculator {
     public static void main(String[] args) {
-        System.out.printf("Currency Calculator:\n");
+        System.out.print("Currency Calculator:\n");
         Scanner scanner = new Scanner(System.in);
         while(true){
             System.out.print("Expression: ");
