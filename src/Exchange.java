@@ -4,10 +4,8 @@ import java.util.Properties;
 public class Exchange {
     protected double value;
     protected double exchange_rate;
-
     public Exchange(double value) {
         this.value = value;
-
         try{
             FileInputStream path;
             Properties property = new Properties();
@@ -18,7 +16,6 @@ public class Exchange {
             System.err.println("Ошибка: файла не существует");
         }
     }
-
     public double get_value(){
         return value;
     }
@@ -26,13 +23,11 @@ public class Exchange {
         if (tmp.indexOf('$') != -1) return values.rub;
         else if (tmp.indexOf('p')!=-1) return values.usd;
         else return values.other;
-
     }
     public Exchange toDollar(){
         System.out.print("=");
         return new Exchange(this.value * this.exchange_rate);
     }
-
     public Exchange toRouble(){
         System.out.print("=");
         return new Exchange(this.value / this.exchange_rate);
