@@ -4,6 +4,7 @@ import java.util.Properties;
 public class Exchange {
     protected double value;
     protected double exchange_rate;
+
     public Exchange(double value) {
         this.value = value;
 
@@ -36,5 +37,4 @@ public class Exchange {
         System.out.print("=");
         return new Exchange(this.value * this.exchange_rate);
     }
-
 }
