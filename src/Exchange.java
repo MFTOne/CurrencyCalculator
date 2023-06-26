@@ -20,8 +20,8 @@ public class Exchange {
         return value;
     }
     public static values conversion(String tmp) {
-        if (tmp.startsWith("toDollars(")&&tmp.endsWith(")")) return values.usd;
-        else if (tmp.startsWith("toRoubles(")&&tmp.endsWith(")")) return values.rub;
+        if (tmp.startsWith("toDollars(")&&tmp.endsWith("p)")) return values.usd;
+        else if (tmp.startsWith("toRoubles($")&&tmp.endsWith(")")) return values.rub;
         else return values.other;
     }
     public Exchange toDollar(){
