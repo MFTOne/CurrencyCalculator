@@ -1,3 +1,5 @@
-public enum values {
-    rub,usd,other
+enum values {
+    usd,
+    rub,
+    other
 }
