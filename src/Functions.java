@@ -13,6 +13,7 @@ public class Functions {
             double value = extractNumber(number);
             sum += value;
         }
+        System.out.print("=");
         return sum;
     }
 
@@ -26,6 +27,7 @@ public class Functions {
         for (int i = 1; i < Numbers.length; i++) {
             diff -= Numbers[i];
         }
+        System.out.print("=");
         return diff;
     }
 

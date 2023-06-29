@@ -1,44 +1,36 @@
 import java.io.*;
 import java.util.Properties;
 
-class Exchange {
-    private double value;
-    private double exchangeRate;
-
+public class Exchange {
+    protected double value;
+    protected double exchange_rate;
     public Exchange(double value) {
         this.value = value;
-        try {
+        try{
             FileInputStream path;
             Properties property = new Properties();
-            path = new FileInputStream("C:\\Users\\akitaru\\IdeaProjects\\CurrencyCalculator\\src\\CFG.properties");
+            path =new FileInputStream ("C:\\Users\\akitaru\\IdeaProjects\\CurrencyCalculator\\src\\CFG.properties");
             property.load(path);
-            exchangeRate = Double.parseDouble(property.getProperty("db.exrate"));
+            exchange_rate=Double.parseDouble(property.getProperty("db.exrate"));
         } catch (IOException e) {
             System.err.println("Ошибка: файла не существует");
         }
     }
-    public double get_value() {
+    public double get_value(){
         return value;
     }
     public static values conversion(String tmp) {
-        String[] prefixes = {"toDollars(", "toRoubles($"};
-        String[] suffixes = {"p)", ")"};
-        values[] currencies = {values.usd, values.rub};
-        for (int i = 0; i < prefixes.length; i++) {
-            if (tmp.startsWith(prefixes[i]) && tmp.endsWith(suffixes[i])) {
-                return currencies[i];
-            }
-        }
-        return values.other;
+        if (tmp.indexOf('$') != -1) return values.usd;
+        else if (tmp.indexOf('p')!=-1) return values.rub;
+        else return values.other;
     }
 
-    public Exchange toDollar() {
-        System.out.print("=");
-        return new Exchange(this.value * this.exchangeRate);
+    public Exchange toDollar(){
+        System.out.print(" to usd = ");
+        return new Exchange(this.value / this.exchange_rate);
     }
-
-    public Exchange toRouble() {
-        System.out.print("=");
-        return new Exchange(this.value / this.exchangeRate);
+    public Exchange toRouble(){
+        System.out.print(" to rub = ");
+        return new Exchange(this.value * this.exchange_rate);
     }
 }
