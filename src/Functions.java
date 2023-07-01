@@ -5,33 +5,77 @@ public class Functions {
         float result1 = (float) result / 100;
         return result1;
     }
-
     public static double func2(String str) {
-        double sum = 0;
-        String[] numbers = str.split("\\+");
-        for (String number : numbers) {
-            double value = extractNumber(number);
-            sum += value;
-        }
-        System.out.print("=");
-        return sum;
+        return 0;
     }
-
     public static double func3(String str) {
-        String[] numbers = str.split("\\-");
-        double[] Numbers = new double[numbers.length];
-        for (int i = 0; i < numbers.length; i++) {
-            Numbers[i] = extractNumber(numbers[i]);
-        }
-        double diff = Numbers[0];
-        for (int i = 1; i < Numbers.length; i++) {
-            diff -= Numbers[i];
-        }
-        System.out.print("=");
-        return diff;
-    }
+        String a = "Error",curr="";
+        String[] additionParts = str.split("\\+");
+        double total = 0;
+        for (String part : additionParts) {
+            String[] subtractionParts = part.split("-");
+            double partTotal = 0;
+            boolean isFirstSubtractionPart = true;
+            for (String subPart : subtractionParts) {
+                String trimmedExpression = subPart.trim();
+                if (trimmedExpression.startsWith("+") || trimmedExpression.startsWith("-")) {
+                    System.out.print("Error");
+                } else {
+                    if (trimmedExpression.startsWith("toDollar(") && trimmedExpression.endsWith("p)") ||
+                            trimmedExpression.startsWith("toDollar(") && trimmedExpression.endsWith("р)")) {
+                        Exchange currencyUSD = new Exchange(Double.parseDouble(trimmedExpression.replaceAll("[^\\d.]", "")));
+                        double value = currencyUSD.toDollar().get_value();
+                        if (isFirstSubtractionPart) {
+                            partTotal += value;
+                        } else {
+                            partTotal -= value;
+                        }
+                        a = "Conversion to usd:";
+                    } else if (trimmedExpression.startsWith("toRouble(") && trimmedExpression.endsWith("$)")) {
+                        Exchange currencyRUB = new Exchange(Double.parseDouble(trimmedExpression.replaceAll("[^\\d.]", "")));
+                        double value = currencyRUB.toRouble().get_value();
+                        if (isFirstSubtractionPart) {
+                            partTotal += value;
+                        } else {
+                            partTotal -= value;
+                        }
+                        a = "Conversion to rub:";
+                    } else if (trimmedExpression.contains("p")||trimmedExpression.contains("р")){
+                        Exchange currencyRUB = new Exchange(Double.parseDouble(trimmedExpression.replaceAll("[^\\d.]", "")));
+                        double value = currencyRUB.get_value();
+                        if (isFirstSubtractionPart) {
+                            partTotal += value;
+                        } else {
+                            partTotal -= value;
+                        }
+                        a = "Sum:";
+                        curr=" rub";
 
-    private static double extractNumber(String str) {
-        return Double.parseDouble(str.replaceAll("[^\\d.]", ""));
+                    }else if (trimmedExpression.contains("$")){
+                        Exchange currencyUSD = new Exchange(Double.parseDouble(trimmedExpression.replaceAll("[^\\d.]", "")));
+                        double value = currencyUSD.get_value();
+                        if (isFirstSubtractionPart) {
+                            partTotal += value;
+                        } else {
+                            partTotal -= value;
+                        }
+                        a = "Sum:";
+                        curr=" usd";
+
+                    }
+                }
+                isFirstSubtractionPart = false;
+            }
+            total += partTotal;
+        }
+        if(a.equals("Error")){
+            System.out.print(a);
+        }
+        else if(curr.equals(" rub")){
+        System.out.print(a+Functions.func1(total)+curr);}
+        else if(curr.equals(" usd")){
+            System.out.print(a+Functions.func1(total)+curr);}
+        else System.out.print(a+Functions.func1(total));
+        return Functions.func1(total);
     }
 }

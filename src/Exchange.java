@@ -19,18 +19,10 @@ public class Exchange {
     public double get_value(){
         return value;
     }
-    public static values conversion(String tmp) {
-        if (tmp.indexOf('$') != -1) return values.usd;
-        else if (tmp.indexOf('p')!=-1) return values.rub;
-        else return values.other;
-    }
-
     public Exchange toDollar(){
-        System.out.print(" to usd = ");
         return new Exchange(this.value / this.exchange_rate);
     }
     public Exchange toRouble(){
-        System.out.print(" to rub = ");
         return new Exchange(this.value * this.exchange_rate);
     }
 }
