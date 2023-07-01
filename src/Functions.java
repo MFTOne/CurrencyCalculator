@@ -6,9 +6,6 @@ public class Functions {
         return result1;
     }
     public static double func2(String str) {
-        return 0;
-    }
-    public static double func3(String str) {
         String a = "Error",curr="";
         String[] additionParts = str.split("\\+");
         double total = 0;
@@ -30,7 +27,7 @@ public class Functions {
                         } else {
                             partTotal -= value;
                         }
-                        a = "Conversion to usd:";
+                        a = "Conversion to usd: ";
                     } else if (trimmedExpression.startsWith("toRouble(") && trimmedExpression.endsWith("$)")) {
                         Exchange currencyRUB = new Exchange(Double.parseDouble(trimmedExpression.replaceAll("[^\\d.]", "")));
                         double value = currencyRUB.toRouble().get_value();
@@ -39,7 +36,7 @@ public class Functions {
                         } else {
                             partTotal -= value;
                         }
-                        a = "Conversion to rub:";
+                        a = "Conversion to rub: ";
                     } else if (trimmedExpression.contains("p")||trimmedExpression.contains("р")){
                         Exchange currencyRUB = new Exchange(Double.parseDouble(trimmedExpression.replaceAll("[^\\d.]", "")));
                         double value = currencyRUB.get_value();

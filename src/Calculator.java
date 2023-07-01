@@ -8,7 +8,7 @@ public class Calculator {
             System.out.print("\nExpression: ");
             String expression = scanner.nextLine();
             if (expression.equals("end")) break;
-            Functions.func3(expression);
+            Functions.func2(expression);
         }
     }
 }
